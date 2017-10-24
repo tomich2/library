@@ -31,17 +31,18 @@ public class MemberDaoImpl implements MemberDao {
 
     @Override
     public void update(Member member) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         em.merge(member);
     }
 
     @Override
     public List<Member> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em.createQuery("select m from Members m", Member.class)
+                                                        .getResultList();
     }
 
     @Override
     public Member findById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em.find(Member.class, id);
     }
     
 }

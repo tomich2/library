@@ -1,23 +1,41 @@
 package cz.fi.muni.pa165.library.persistance.entity;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 /**
- * Library member entity
+ * Entity representing member of library
  * 
  * @author xchomo
  */
 @Entity
-@Table(name="Members")
+@Table(name="members") 
+//member is a keyword
 public class Member {
+
+    public Member() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    
+    @OneToMany(mappedBy = "member")
+    private Set<Loan> loans = new HashSet<>();
+
+    public Set<Loan> getLoans() {
+        return loans;
+    }
+
+    public void setLoans(Set<Loan> loans) {
+        this.loans = loans;
+    }
     
     public Long getId() {
         return id;
