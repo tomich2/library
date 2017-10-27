@@ -14,7 +14,6 @@ import javax.validation.constraints.Pattern;
  * @author xchomo
  */
 @Entity
-@Table(name = "members")
 public class Member{
 
     public Member() {

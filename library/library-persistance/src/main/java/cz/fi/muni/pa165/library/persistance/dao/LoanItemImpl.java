@@ -38,14 +38,14 @@ public class LoanItemImpl implements LoanItem {
 
     @Override
     public List<LoanItem> findByLoan(Loan loan) {
-        return em.createQuery("SELECT l FROM loan_items l WHERE l.loan = :loanid", LoanItem.class)
+        return em.createQuery("SELECT l FROM LoanItem l WHERE l.loan = :loanid", LoanItem.class)
                                                                     .setParameter("loanid", loan)
                                                                     .getResultList();
     }
 
     @Override
     public List<LoanItem> findAll() {
-        return em.createQuery("select l from loan_items l", LoanItem.class).getResultList();
+        return em.createQuery("select l from LoanItem l", LoanItem.class).getResultList();
     }
     
 }

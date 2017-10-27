@@ -2,7 +2,6 @@ package cz.fi.muni.pa165.library.persistance.dao;
 
 import  cz.fi.muni.pa165.library.persistance.entity.Book;
 import java.util.List;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *Interface for data access objects which provide access to Book entity

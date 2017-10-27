@@ -9,7 +9,6 @@ import javax.validation.constraints.NotNull;
  * @author xchomo
  */
 @Entity
-@Table(name = "loan_items")
 public class LoanItem{
    
     @Id

@@ -35,13 +35,13 @@ public class LoanDaoImpl implements LoanDao {
 
     @Override
     public List<LoanDao> allLoansOfMember(Member member) {
-       return em.createQuery("select l from loans l where l.member = :member", LoanDao.class)
+       return em.createQuery("select l from Loan l where l.member = :member", LoanDao.class)
                                             .setParameter("member", member).getResultList();
     }
 
     @Override
     public List<LoanDao> findAll() {
-        return em.createQuery("select l from loans l", LoanDao.class).getResultList();
+        return em.createQuery("select l from Loan l", LoanDao.class).getResultList();
     }
 
     @Override

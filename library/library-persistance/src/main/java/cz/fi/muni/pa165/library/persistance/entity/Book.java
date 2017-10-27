@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
-@Table(name = "books")
 public class Book{
 
     @Id

@@ -48,7 +48,7 @@ public class BookDaoTest extends AbstractTestNGSpringContextTests{
         em = emf.createEntityManager();
     }
     
-    @Test(expectedExceptions = {IllegalArgumentException.class})
+    @Test(expectedExceptions = {org.springframework.dao.InvalidDataAccessApiUsageException.class})
     public void createNull(){
         bookDao.create(null);
     }

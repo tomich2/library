@@ -25,7 +25,6 @@ import javax.validation.constraints.NotNull;
  * @author xchomo
  */
 @Entity
-@Table(name = "loans")
 public class Loan{
 
     public Loan() {

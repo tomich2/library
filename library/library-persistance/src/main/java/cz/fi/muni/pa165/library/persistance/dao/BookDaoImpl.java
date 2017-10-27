@@ -37,7 +37,7 @@ public class BookDaoImpl implements BookDao {
 
     @Override
     public List<Book> findAll() {
-        return em.createQuery("select b from books b", Book.class)
+        return em.createQuery("select b from Book b", Book.class)
                                                         .getResultList();
     }
 
