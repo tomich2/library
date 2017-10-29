@@ -1,2 +1,5 @@
 /library/library-persistance/target/
 /library/library-persistance/nbproject/
+*.idea
+*.class
+*.jar
