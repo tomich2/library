@@ -90,6 +90,11 @@ public class Loan{
     public void setLoanItems(Set<LoanItem> loanItems) {
         this.loanItems = loanItems;
     }
+    
+    public void addLoanItem(LoanItem item){
+        loanItems.add(item);
+        persist(this);
+    }
 
     public void persist(Object object) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");

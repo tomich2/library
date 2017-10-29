@@ -36,8 +36,7 @@ public class MemberDaoImpl implements MemberDao {
 
     @Override
     public List<Member> findAll() {
-        return em.createQuery("select m from Member m", Member.class)
-                                                        .getResultList();
+        return em.createQuery("select m from Member m", Member.class).getResultList();
     }
 
     @Override

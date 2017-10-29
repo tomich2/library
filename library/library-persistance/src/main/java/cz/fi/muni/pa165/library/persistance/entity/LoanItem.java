@@ -50,7 +50,5 @@ public class LoanItem{
     public void setLoan(Loan loan) {
         this.loan = loan;
     }
-
-    
     
 }

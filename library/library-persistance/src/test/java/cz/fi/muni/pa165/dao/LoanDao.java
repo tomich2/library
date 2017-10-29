@@ -8,7 +8,10 @@ package cz.fi.muni.pa165.dao;
 import cz.fi.muni.pa165.library.persistance.config.PersistenceApplicationContext;
 import cz.fi.muni.pa165.library.persistance.dao.BookDao;
 import cz.fi.muni.pa165.library.persistance.entity.Book;
+import cz.fi.muni.pa165.library.persistance.entity.Loan;
+import cz.fi.muni.pa165.library.persistance.entity.LoanItem;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -24,6 +27,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+
 /**
  *
  * @author shado
@@ -31,25 +35,36 @@ import org.testng.annotations.Test;
 @ContextConfiguration(classes=PersistenceApplicationContext.class)
 @TestExecutionListeners(TransactionalTestExecutionListener.class)
 @Transactional
-public class BookDaoTest extends AbstractTestNGSpringContextTests{
+public class LoanDao extends AbstractTestNGSpringContextTests{
     
     @Autowired
-    private BookDao bookDao;
+    private LoanDao loanDao;
     
     @PersistenceContext
     private EntityManager em;
-    /*
-    @PersistenceUnit
-    private EntityManagerFactory emf;
-    */
+    
+    private Loan l1;
+    private Loan l2;
+    
     private Book b1;
     private Book b2;
     
     
     @BeforeMethod
     public void setUp() {
+        l1 = new Loan();
+        
         b1 = new Book("author1", "title1");
         b2 = new Book("author2", "title2");
+        
+        LoanItem l1i1 = new LoanItem();
+        l1i1.setBook(b1);
+        l1i1.setLoan(l1);
+        
+        Date loanCreatedl1 = new Date();
+        
+        l1.setLoanCreated(loanCreatedl1);
+        l1.setLoanItems(loanItems);
     }
     
     
@@ -160,4 +175,6 @@ public class BookDaoTest extends AbstractTestNGSpringContextTests{
         
         Assert.assertEquals(bookDao.findAll(), booksMock);
     }
+    
+    
 }
