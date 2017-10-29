@@ -5,6 +5,7 @@
  */
 package cz.fi.muni.pa165.library.persistance.dao;
 
+import cz.fi.muni.pa165.library.persistance.entity.Loan;
 import cz.fi.muni.pa165.library.persistance.entity.Member;
 import java.util.List;
 import java.util.Objects;
@@ -18,34 +19,36 @@ public class LoanDaoImpl implements LoanDao {
     private EntityManager em;
     
     @Override
-    public void create(LoanDao loan) {
-         em.persist(loan);
+    public void create(Loan loan){
+        em.persist(loan);
     }
 
     @Override
-    public void delete(LoanDao loan) {
-        Objects.requireNonNull(loan, "null argument loan");
-         em.remove(loan);
+    public void delete(Loan loan) throws IllegalArgumentException{
+        if(loan == null){
+            throw new IllegalArgumentException();
+        }
+        em.remove(findById(loan.getId()));
     }
 
     @Override
-    public LoanDao findById(Long id) {
-        return em.find(LoanDao.class, id);
+    public Loan findById(Long id) {
+        return em.find(Loan.class, id);
     }
 
     @Override
-    public List<LoanDao> allLoansOfMember(Member member) {
-       return em.createQuery("select l from Loan l where l.member = :member", LoanDao.class)
+    public List<Loan> allLoansOfMember(Member member) {
+       return em.createQuery("select l from Loan l where l.member = :member", Loan.class)
                                             .setParameter("member", member).getResultList();
     }
 
     @Override
-    public List<LoanDao> findAll() {
-        return em.createQuery("select l from Loan l", LoanDao.class).getResultList();
+    public List<Loan> findAll() {
+        return em.createQuery("select l from Loan l", Loan.class).getResultList();
     }
 
     @Override
-    public void update(LoanDao loan) {
+    public void update(Loan loan) {
         em.merge(loan);
     }
     

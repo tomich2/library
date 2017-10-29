@@ -5,6 +5,7 @@
  */
 package cz.fi.muni.pa165.library.persistance.dao;
 import cz.fi.muni.pa165.library.persistance.entity.Loan;
+import cz.fi.muni.pa165.library.persistance.entity.LoanItem;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
  *
  * @author xchomo
  */
-public interface LoanItem {
+public interface LoanItemDao {
     
     /**
      * Persists new LoanItem into persistence context

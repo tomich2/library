@@ -38,7 +38,6 @@ public class Loan{
     @Temporal(TemporalType.TIMESTAMP)
     private Date loanCreated;
     
-    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     private Date loanReturned;
     
@@ -92,8 +91,14 @@ public class Loan{
     }
     
     public void addLoanItem(LoanItem item){
+        if(loanItems == null){
+            loanItems = new HashSet<>();
+        }
         loanItems.add(item);
-        persist(this);
+    }
+    
+    public void removeLoanItem(LoanItem item){
+        loanItems.remove(item);
     }
 
     public void persist(Object object) {
@@ -110,6 +115,24 @@ public class Loan{
             em.close();
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == this){
+            return true;
+        }
+        if(obj != null && obj.getClass() == getClass()){
+            Loan loan = (Loan)obj;
+            if(loan.getLoanCreated() == getLoanCreated() &&
+                    loan.getLoanItems() == getLoanItems() && 
+                    loan.getLoanReturned() == getLoanReturned() &&
+                    loan.getMember() == getMember()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     
     
 }

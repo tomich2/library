@@ -6,12 +6,13 @@
 package cz.fi.muni.pa165.library.persistance.dao;
 
 import cz.fi.muni.pa165.library.persistance.entity.Loan;
+import cz.fi.muni.pa165.library.persistance.entity.LoanItem;
 import java.util.List;
 import javax.persistence.*;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class LoanItemImpl implements LoanItem {
+public class LoanItemDaoImpl implements LoanItemDao {
 
     @PersistenceContext
     private EntityManager em;
@@ -23,7 +24,7 @@ public class LoanItemImpl implements LoanItem {
 
     @Override
     public void delete(LoanItem loanItem) {
-        em.remove(loanItem);
+        em.remove(findById(loanItem.getId()));
     }
 
     @Override

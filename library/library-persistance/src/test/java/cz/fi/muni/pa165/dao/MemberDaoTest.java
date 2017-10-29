@@ -31,11 +31,11 @@ import org.testng.annotations.Test;
 @ContextConfiguration(classes=PersistenceApplicationContext.class)
 @TestExecutionListeners(TransactionalTestExecutionListener.class)
 @Transactional
-public class MemberDao extends AbstractTestNGSpringContextTests{
+public class MemberDaoTest extends AbstractTestNGSpringContextTests{
     
         
     @Autowired
-    private MemberDao memberDao;
+    private MemberDaoTest memberDao;
     
     @PersistenceContext
     private EntityManager em;

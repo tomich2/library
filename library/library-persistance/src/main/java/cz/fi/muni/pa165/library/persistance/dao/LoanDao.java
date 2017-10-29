@@ -1,5 +1,6 @@
 package cz.fi.muni.pa165.library.persistance.dao;
 
+import cz.fi.muni.pa165.library.persistance.entity.Loan;
 import cz.fi.muni.pa165.library.persistance.entity.Member;
 import java.util.List;
 
@@ -14,14 +15,14 @@ public interface LoanDao {
      *
      * @param loan to be created
      */
-    public void create(LoanDao loan);
+    public void create(Loan loan);
 
     /**
      * Delete loan from database
      *
      * @param loan to be deleted
      */
-    public void delete(LoanDao loan);
+    public void delete(Loan loan) throws IllegalArgumentException;
 
     /**
      * Find a loan with specific id from the database
@@ -29,7 +30,7 @@ public interface LoanDao {
      * @param id of loan to be returned
      * @return loan with specified Id 
      */
-    public LoanDao findById(Long id);
+    public Loan findById(Long id);
 
     /**
      * Returns all loans for the member 
@@ -38,19 +39,19 @@ public interface LoanDao {
      * @return all loans for specified member 
      */
     
-    public List<LoanDao> allLoansOfMember(Member member);
+    public List<Loan> allLoansOfMember(Member member);
 
     /**
      * Returns all  loans of the member
      *
      * @return all loans 
      */
-    public List<LoanDao> findAll();
+    public List<Loan> findAll();
 
     /**
      * Updates specified loan
      *
      * @param loan to be updated
      */
-    public void update(LoanDao loan);
+    public void update(Loan loan);
 }

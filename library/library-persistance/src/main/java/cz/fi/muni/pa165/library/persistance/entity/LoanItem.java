@@ -19,7 +19,6 @@ public class LoanItem{
     @ManyToOne
     private Book book;
     
-    @NotNull
     @ManyToOne
     private Loan loan;
     
